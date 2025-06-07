@@ -15,6 +15,6 @@ add_subdirectory(thirdparty/sdl)
 add_executable(lww src/main.cpp)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
-set(CMAKE_LIBRARY_OUTP  UT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
 
-target_link_libraries(lww PRIVATE SDL3::SDL3)
+target_link_libraries(lww PRIVATE SDL2)
