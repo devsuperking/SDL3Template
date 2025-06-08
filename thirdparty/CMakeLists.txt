@@ -33,12 +33,27 @@ set(SDLIMAGE_AVIF OFF)
 set(SDLIMAGE_BMP OFF)
 set(SDLIMAGE_JPEG OFF)
 set(SDLIMAGE_WEBP OFF)
-
 add_subdirectory(sdl_image EXCLUDE_FROM_ALL)
+
+# Configure SDL_TTF
+set(SDLTTF_VENDORED ON)
+add_subdirectory(SDL_ttf EXCLUDE_FROM_ALL)
+
+# Configure SDL_Mixer
+set(SDLMIXER_MIDI_NATIVE OFF)
+set(SDLMIXER_GME OFF)
+set(SDLMIXER_WAVPACK OFF)
+set(SDLMIXER_MOD OFF)
+set(SDLMIXER_OPUS OFF)
+set(SDLMIXER_VENDORED ON)
+add_subdirectory(SDL_mixer EXCLUDE_FROM_ALL)
+
 
 add_library(thirdparty_lib INTERFACE)
 
 target_link_libraries(thirdparty_lib INTERFACE
         SDL3::SDL3
+        SDL3_ttf::SDL3_ttf
         SDL3_image::SDL3_image
+        SDL3_mixer::SDL3_mixer
 )
