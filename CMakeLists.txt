@@ -1,20 +1,15 @@
-cmake_minimum_required(VERSION 3.31)
-project(lww)
+cmake_minimum_required(VERSION 3.16)
+project(MySDLProject)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if ((APPLE AND NOT CMAKE_SYSTEM_NAME MATCHES "Darwin") OR EMSCRIPTEN)
-    set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "")
-    set(SDL_SHARED OFF CACHE BOOL "Build SDL shared lib")
-else()
-    set(SDL_SHARED ON CACHE BOOL "Build SDL shared lib")
+add_subdirectory(thirdparty)
+
+add_executable(MySDLApp src/main.cpp)
+
+target_link_libraries(MySDLApp PRIVATE thirdparty_lib)
+
+if (WIN32)
+    target_compile_definitions(MySDLApp PRIVATE SDL_MAIN_HANDLED)
 endif()
-
-add_subdirectory(thirdparty/sdl)
-
-add_executable(lww src/main.cpp)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
-
-target_link_libraries(lww PRIVATE SDL2)
