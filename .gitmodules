@@ -4,3 +4,9 @@
 [submodule "thirdparty/sdl_image"]
 	path = thirdparty/sdl_image
 	url = https://github.com/libsdl-org/SDL_image
+[submodule "thirdparty/sdl_ttf"]
+	path = thirdparty/sdl_ttf
+	url = https://github.com/libsdl-org/SDL_ttf.git
+[submodule "thirdparty/sdl_mixer"]
+	path = thirdparty/sdl_mixer
+	url = https://github.com/libsdl-org/SDL_mixer
